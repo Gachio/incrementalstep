@@ -21,3 +21,13 @@ resource "aws_instance" "dynasty" {
         Name = "PoppaDynasty"
     }
 }
+
+terraform {
+  backend "s3" {
+    key = "workspaces-attempt/terraform.tfstate"
+    bucket = "unlimit-up"
+    region = "us-west-2"
+    dynamodb_table = "unlimit-up-locks"
+    encrypt = true
+  }
+}
